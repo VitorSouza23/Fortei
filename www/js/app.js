@@ -23,7 +23,7 @@ app.run(function($ionicPlatform) {
   });
 });
 
-app.controller('mainController', function($scope, $ionicPopup){//Ionic Popup Vídeo 09
+app.controller('mainController', function($scope, $ionicPopup, $ionicListDelegate){//Ionic Popup Vídeo 09
     var tasks = new getTasks();
     $scope.items = tasks.items;
     //$scope.showMarked = false -> Não adicone pq dá probrema
@@ -34,9 +34,9 @@ app.controller('mainController', function($scope, $ionicPopup){//Ionic Popup Ví
         item.finalizada = !item.finalizada;
     };
     
-    function getItem(item){//Vídeo 09
+    function getItem(item, novo){//Vídeo 09, novo Vídeo 10
         $scope.data = {};
-        $scope.data.newTask = "";
+        $scope.data.newTask = item.nome; //item.nome Vídeio 10
         $ionicPopup.show({
             title: "Tarefa",
             scope: $scope,
@@ -47,11 +47,15 @@ app.controller('mainController', function($scope, $ionicPopup){//Ionic Popup Ví
                     text: "OK",
                     onTap: function(e){
                         item.nome = $scope.data.newTask;
-                        tasks.add(item);
+                        if(novo === true){// Vídeo 10
+                            tasks.add(item);
+                        }
+                        
                     }
                 }
             ]
         });
+        $ionicListDelegate.closeOptionButtons();// Vídeo 10
     }
     
     $scope.onShowItem = function (item){// Vídeo 07
@@ -68,6 +72,10 @@ app.controller('mainController', function($scope, $ionicPopup){//Ionic Popup Ví
     
     $scope.onItemAdd = function (){// Vídeo 09
         item = {nome:"", finalizada: false};
-        getItem(item);
+        getItem(item, true);
     };
+    
+    $scope.onItemEdit = function(item){// Vídeo 10
+        getItem(item, false);
+    }
 });
