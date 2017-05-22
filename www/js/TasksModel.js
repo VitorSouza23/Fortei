@@ -7,7 +7,7 @@
 //Vídeo 05
 function getTasks() {
     this.items = [
-        {nome: "Item 1", finalizada: false},
+        {nome: "Item 1", finalizada: false}, //Vídeo 06
         {nome: "Item 2", finalizada: false},
         {nome: "Item 3", finalizada: false},
         {nome: "Item 4", finalizada: false}

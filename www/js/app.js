@@ -27,4 +27,8 @@ app.controller('mainController', function($scope){
     var tasks = new getTasks();
     $scope.items = tasks.items;
   
+    $scope.onMarkTask = function(item){ //Vídeo 06
+        console.log("passou");
+        item.finalizada = !item.finalizada;
+    };
 });

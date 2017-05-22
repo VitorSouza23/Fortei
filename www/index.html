@@ -42,7 +42,14 @@
         <ion-content ng-controller="mainController"><!-- Vídeo 04-->
             <ion-list><!--Vídeo 05-->
                 <ion-item ng-repeat="item in items">
-                    {{item}}
+                    <div class="row"><!--Vídeo 6-->
+                        <div class="col-90"><!--Vídeo 6-->
+                            {{item.nome}}
+                        </div>
+                        <div class="col-10">
+                            <button class="button button-small button-positive button-outline" ng-click="onMarkTask(item)"><i class="icon ion-checkmark" ng-show="item.finalizada"></i></button><!--Vídeo 06-->
+                        </div>
+                    </div>
                 </ion-item>
             </ion-list>
       </ion-content>
