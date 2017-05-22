@@ -12,5 +12,10 @@ function getTasks() {
         {nome: "Item 3", finalizada: false},
         {nome: "Item 4", finalizada: false}
     ];
+    
+    this.remove = function (item){ //Vídeo 08
+        var pos = this.items.indexOf(item);
+        this.items.splice(pos, 1);
+    };
 }
 

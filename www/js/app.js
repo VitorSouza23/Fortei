@@ -26,13 +26,23 @@ app.run(function($ionicPlatform) {
 app.controller('mainController', function($scope){
     var tasks = new getTasks();
     $scope.items = tasks.items;
+    //$scope.showMarked = false -> Não adicone pq dá probrema
+    $scope.removeStatus = false;
   
     $scope.onMarkTask = function(item){ //Vídeo 06
         console.log("passou");
         item.finalizada = !item.finalizada;
     };
     
-    $scope.onShowItem = function (item){
+    $scope.onShowItem = function (item){// Vídeo 07
         return item.finalizada && !$scope.showMarked;
+    };
+    
+    $scope.onItemRemove = function (item){// Vídeo 08
+        tasks.remove(item);
+    };
+    
+    $scope.onClickRemove = function (){// Vídeo 08
+        $scope.removeStatus = !$scope.removeStatus;
     };
 });

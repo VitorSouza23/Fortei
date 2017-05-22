@@ -56,11 +56,13 @@
             
         </ion-footer-bar>
         <ion-content ng-controller="mainController"><!-- Vídeo 04-->
-            <ion-list><!--Vídeo 05-->
+            <button class="button button-block button-assertive" ng-click="onClickRemove()">Remover</button><!--Vídeo 08-->
+            <ion-list show-delete="removeStatus"><!--Vídeo 05--><!--Show delelte só no Vídeo 08-->
                 <ion-item ng-repeat="item in items track by $index" ng-hide="onShowItem(item)"><!--Vídeo 07-->
                     <div class="row"><!--Vídeo 6-->
                         <div class="col-90"><!--Vídeo 6-->
                             {{item.nome}}
+                            <ion-delete-button class="ion-minus-circled" ng-click="onItemRemove(item)"></ion-delete-button><!--Vídeo 08-->
                         </div>
                         <div class="col-10">
                             <button class="button button-small button-positive button-outline" ng-click="onMarkTask(item)"><i class="icon ion-checkmark" ng-show="item.finalizada"></i></button><!--Vídeo 06-->
