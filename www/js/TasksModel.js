@@ -6,12 +6,24 @@
 
 //Vídeo 05
 function getTasks() {
-    this.items = [
+    /*this.items = [
         {nome: "Item 1", finalizada: false}, //Vídeo 06
         {nome: "Item 2", finalizada: false},
         {nome: "Item 3", finalizada: false},
         {nome: "Item 4", finalizada: false}
-    ];
+    ];*/
+    
+    this.items = []; //Vídeo 11
+    
+    var lista = localStorage.getItem("tasklist");// Vídeo 11
+    if(lista !== null){
+        this.items = angular.fromJson(lista);
+    }
+    
+    this.save = function(){ //Vídeo 11
+        var lista = angular.toJson(this.items);
+        localStorage.setItem("tasklist", lista);
+    };
     
     this.add = function (item) {// Vídeo 09
         this.items.push(item);

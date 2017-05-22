@@ -32,6 +32,7 @@ app.controller('mainController', function($scope, $ionicPopup, $ionicListDelegat
     $scope.onMarkTask = function(item){ //Vídeo 06
         console.log("passou");
         item.finalizada = !item.finalizada;
+        tasks.save();// Vídeo 11;
     };
     
     function getItem(item, novo){//Vídeo 09, novo Vídeo 10
@@ -50,7 +51,7 @@ app.controller('mainController', function($scope, $ionicPopup, $ionicListDelegat
                         if(novo === true){// Vídeo 10
                             tasks.add(item);
                         }
-                        
+                        tasks.save();// Vídeo 11
                     }
                 }
             ]
@@ -64,6 +65,7 @@ app.controller('mainController', function($scope, $ionicPopup, $ionicListDelegat
     
     $scope.onItemRemove = function (item){// Vídeo 08
         tasks.remove(item);
+        tasks.save();// Vídeo 11
     };
     
     $scope.onClickRemove = function (){// Vídeo 08
