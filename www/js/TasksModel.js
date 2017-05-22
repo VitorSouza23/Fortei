@@ -13,6 +13,10 @@ function getTasks() {
         {nome: "Item 4", finalizada: false}
     ];
     
+    this.add = function (item) {// Vídeo 09
+        this.items.push(item);
+    };
+    
     this.remove = function (item){ //Vídeo 08
         var pos = this.items.indexOf(item);
         this.items.splice(pos, 1);

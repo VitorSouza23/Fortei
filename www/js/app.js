@@ -23,7 +23,7 @@ app.run(function($ionicPlatform) {
   });
 });
 
-app.controller('mainController', function($scope){
+app.controller('mainController', function($scope, $ionicPopup){//Ionic Popup Vídeo 09
     var tasks = new getTasks();
     $scope.items = tasks.items;
     //$scope.showMarked = false -> Não adicone pq dá probrema
@@ -33,6 +33,26 @@ app.controller('mainController', function($scope){
         console.log("passou");
         item.finalizada = !item.finalizada;
     };
+    
+    function getItem(item){//Vídeo 09
+        $scope.data = {};
+        $scope.data.newTask = "";
+        $ionicPopup.show({
+            title: "Tarefa",
+            scope: $scope,
+            template: "<input type='text' placeholder='Tarefa' autofocus='true' ng-model='data.newTask'>",
+            buttons: [
+                {text: "Cancelar"},
+                {
+                    text: "OK",
+                    onTap: function(e){
+                        item.nome = $scope.data.newTask;
+                        tasks.add(item);
+                    }
+                }
+            ]
+        });
+    }
     
     $scope.onShowItem = function (item){// Vídeo 07
         return item.finalizada && !$scope.showMarked;
@@ -44,5 +64,10 @@ app.controller('mainController', function($scope){
     
     $scope.onClickRemove = function (){// Vídeo 08
         $scope.removeStatus = !$scope.removeStatus;
+    };
+    
+    $scope.onItemAdd = function (){// Vídeo 09
+        item = {nome:"", finalizada: false};
+        getItem(item);
     };
 });
