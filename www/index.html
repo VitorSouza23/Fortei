@@ -39,9 +39,25 @@
       <ion-header-bar class="bar-energized">
         <h1 class="title">Tarefas</h1> <!--Vídeo 03-->
       </ion-header-bar>
+        <ion-footer-bar class="bar-calm"><!--Vídeo 07-->
+            <div class="row">
+                <div class="col-90">
+                    <strong>Exibir Finalizadas</strong>
+                </div>
+                <div class="col-10">
+                    <label class="toggle">
+                        <input type="checkbox" ng-model="showMarked"><!--Vídeo 07-->
+                <div class="track">
+                    <div class="handle"></div>
+                </div>
+            </label>
+                </div>
+            </div>
+            
+        </ion-footer-bar>
         <ion-content ng-controller="mainController"><!-- Vídeo 04-->
             <ion-list><!--Vídeo 05-->
-                <ion-item ng-repeat="item in items">
+                <ion-item ng-repeat="item in items track by $index" ng-hide="onShowItem(item)"><!--Vídeo 07-->
                     <div class="row"><!--Vídeo 6-->
                         <div class="col-90"><!--Vídeo 6-->
                             {{item.nome}}

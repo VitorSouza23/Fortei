@@ -31,4 +31,8 @@ app.controller('mainController', function($scope){
         console.log("passou");
         item.finalizada = !item.finalizada;
     };
+    
+    $scope.onShowItem = function (item){
+        return item.finalizada && !$scope.showMarked;
+    };
 });
